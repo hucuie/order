@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<meta name="renderer" content="webkit">
+		<title>北京标软健康数据云平台订单情况</title>
+		<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/css/index.css" />
+	</head>
+	<body>
+		<!--头部-->
+		<div class="con">
+			<div class="header">
+				<img src="assets/img/logo.png"><span class="modal-title">掌上健检</span>
+				<span class="title">北京标软健康数据云平台订单情况</span>
+				<div class="br"><img src="assets/img/biaoruan.png"></div>
+			</div>
+			<div class="weather">
+				<span id="showTime">2020年5月11-11时34分14秒</span></div>
+			<div class="data">
+				<div class="num num-first">预约机构总数：<span id="orgNumber">60</span></div>
+				<div class="num" id="rerister">用户注册量：<span id="reristernum">7</span></div>
+				<div class="num">七日内订单总量：<span id="reportQueryNumber">7</span></div>
+				<div class="num">订单机构总数：<span id="reportQueryTotalNumber">0</span></div>
+				<div class="num">订单总金额：<span id="reportQueryTotalNumber">0</span></div>
+			</div>
+		</div>
+		<!--主体-->
+		<div class="main clearfix">
+			<div class="main-left">
+				<div class="border-container">
+					<div class="name-title">
+						平台资金运行情况
+					</div>
+					<div id="edubalance"></div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+				<div class="border-container">
+					<div class="name-title">
+						6月份每天数据报告情况
+					</div>
+					<div id="graduateyear"></div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+				<div class="border-container">
+					<div class="name-title">
+						机构上线前5省份
+					</div>
+
+					<div id="courserateone"></div>
+
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+			</div>
+			<div class="main-middle">
+
+				<div class="border-container">
+					<div class="name-title">
+						当日实时数据金额
+					</div>
+					<div id="courserate"></div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+				<div class="border-container">
+					<div class="name-title">
+						机构当日报告数据情况
+					</div>
+					<div id="changedetail" ></div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+				<div class="border-container">
+					<div class="name-title">
+						机构报告数据总量排名
+					</div>
+					<div id="container" ></div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+
+
+			</div>
+			<div class="main-right">
+				<div class="border-container">
+					<div class="top">
+						<div>实时订单金额</div>
+						<div class="list">
+							<div>每日订单量</div>
+							<div class="nums">20</div>
+						</div>
+						<div class="list">
+							<div>每日订单合计</div>
+							<div class="nums">20</div>
+						</div>
+
+					</div>
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+
+				</div>
+
+				<div class="border-container">
+					<div class="name-title">
+						===
+					</div>
+					<div class="right">
+
+						<div class="bottom" id="scrollBox">
+							<ul  id="con1">
+								<div class="titles"><span style="padding-right:5px">|</span>实时订单数据</div>
+								<li class="move">
+									<div class="times">20200303 18:00</div>
+									<div class="wrap" id="sh">
+
+										<div class="left"><img src="assets/img/logo.png"></div>
+										<div class="right">
+											张三20200203下单购买了xxx套擦
+										</div>
+									</div>
+								</li>
+								<li class="move">
+									<div class="times">20200303 18:00</div>
+									<div class="wrap">
+
+										<div class="left"><img src="assets/img/logo.png"></div>
+										<div class="right">
+											张三20200203下单购买了xx报告解读
+										</div>
+									</div>
+								</li>
+								<li class="move">
+									<div class="times">20200303 18:00</div>
+									<div class="wrap">
+
+										<div class="left"><img src="assets/img/logo.png"></div>
+										<div class="right">
+											张三20200203下单购买了xx报告解读
+										</div>
+									</div>
+								</li>
+								<li class="move">
+									<div class="times">20200303 18:00</div>
+									<div class="wrap">
+
+										<div class="left"><img src="assets/img/logo.png"></div>
+										<div class="right">
+											张三20200203下单购买了xx报告解读
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+
+					<span class="top-left border-span"></span>
+					<span class="top-right border-span"></span>
+					<span class="bottom-left border-span"></span>
+					<span class="bottom-right border-span"></span>
+				</div>
+
+
+			</div>
+		</div>
+	</body>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/echarts.min.js"></script>
+	<script src="assets/js/index.js"></script>
+	<script src="assets/js/map/shandong.js"></script>
+	<script>
+		var t = null;
+		t = setTimeout(time, 1000);
+
+		function time() {
+			clearTimeout(t);
+			dt = new Date();
+			var y = dt.getFullYear();
+			var mt = dt.getMonth() + 1;
+			var day = dt.getDate();
+			var h = dt.getHours();
+			var m = dt.getMinutes();
+			var s = dt.getSeconds();
+			document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s + "秒";
+			t = setTimeout(time, 1000);
+		}
+
+	var area =document.getElementById('scrollBox');
+	var lHeight =0;
+	var time = 10;
+	area.innerHTML+=area.innerHTML;
+	area.scrollTop = 0;
+	var timer;
+	function scrollMove(){
+	area.scrollTop++;
+	timer = setInterval("scrollUp()",time);
+	}
+	
+	function scrollUp(){
+	if(area.scrollTop % lHeight==0){//滚动一行后，延时2秒
+	clearInterval(timer);
+	setTimeout("scrollMove()");
+	}else{
+	area.scrollTop++;
+	if(area.scrollTop>=area.scrollHeight/2){    //判断滚动高度,当滚动高度大于area本身的高度时，使其回到原点重新滚动
+	area.scrollTop = 0;
+	}
+	}
+
+	}
+	
+	setTimeout("scrollMove()");//延迟2秒后执行scrollMove
+	
+	</script>
+</html>
