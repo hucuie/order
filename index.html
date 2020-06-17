@@ -19,10 +19,9 @@
 			<div class="weather">
 				<span id="showTime">2020年5月11-11时34分14秒</span></div>
 			<div class="data">
-				<div class="num num-first">预约机构总数：<span id="orgNumber">60</span></div>
-				<div class="num" id="rerister">用户注册量：<span id="reristernum">7</span></div>
-				<div class="num">七日内订单总量：<span id="reportQueryNumber">7</span></div>
-				<div class="num">订单机构总数：<span id="reportQueryTotalNumber">0</span></div>
+				<div class="num num-first">预约机构总数：<span id="orgNumber">0</span></div>
+				<div class="num" id="rerister">用户注册量：<span id="reristernum">0</span></div>
+				<div class="num">七日内订单总量：<span id="reportQueryNumber">0</span></div>
 				<div class="num">订单总金额：<span id="reportQueryTotalNumber">0</span></div>
 			</div>
 		</div>
@@ -41,7 +40,7 @@
 				</div>
 				<div class="border-container">
 					<div class="name-title">
-						6月份每天数据报告情况
+						6月份每天订单数据情况
 					</div>
 					<div id="graduateyear"></div>
 					<span class="top-left border-span"></span>
@@ -76,9 +75,9 @@
 				</div>
 				<div class="border-container">
 					<div class="name-title">
-						机构当日报告数据情况
+						报告数据总量
 					</div>
-					<div id="changedetail" ></div>
+					<div id="changedetail"></div>
 					<span class="top-left border-span"></span>
 					<span class="top-right border-span"></span>
 					<span class="bottom-left border-span"></span>
@@ -86,9 +85,9 @@
 				</div>
 				<div class="border-container">
 					<div class="name-title">
-						机构报告数据总量排名
+						订单数据总量
 					</div>
-					<div id="container" ></div>
+					<div id="container"></div>
 					<span class="top-left border-span"></span>
 					<span class="top-right border-span"></span>
 					<span class="bottom-left border-span"></span>
@@ -102,12 +101,12 @@
 					<div class="top">
 						<div>实时订单金额</div>
 						<div class="list">
-							<div>每日订单量</div>
-							<div class="nums">20</div>
+							<div>今日订单总量</div>
+							<div class="nums todayOrderNum ">0</div>
 						</div>
 						<div class="list">
-							<div>每日订单合计</div>
-							<div class="nums">20</div>
+							<div>今日订单总金额</div>
+							<div class="nums todayOrderPrice">0</div>
 						</div>
 
 					</div>
@@ -125,48 +124,17 @@
 					<div class="right">
 
 						<div class="bottom" id="scrollBox">
-							<ul  id="con1">
+							<ul id="con1">
 								<div class="titles"><span style="padding-right:5px">|</span>实时订单数据</div>
 								<li class="move">
-									<div class="times">20200303 18:00</div>
-									<div class="wrap" id="sh">
 
-										<div class="left"><img src="assets/img/logo.png"></div>
-										<div class="right">
-											张三20200203下单购买了xxx套擦
-										</div>
-									</div>
 								</li>
 								<li class="move">
-									<div class="times">20200303 18:00</div>
-									<div class="wrap">
 
-										<div class="left"><img src="assets/img/logo.png"></div>
-										<div class="right">
-											张三20200203下单购买了xx报告解读
-										</div>
-									</div>
 								</li>
-								<li class="move">
-									<div class="times">20200303 18:00</div>
-									<div class="wrap">
 
-										<div class="left"><img src="assets/img/logo.png"></div>
-										<div class="right">
-											张三20200203下单购买了xx报告解读
-										</div>
-									</div>
-								</li>
-								<li class="move">
-									<div class="times">20200303 18:00</div>
-									<div class="wrap">
 
-										<div class="left"><img src="assets/img/logo.png"></div>
-										<div class="right">
-											张三20200203下单购买了xx报告解读
-										</div>
-									</div>
-								</li>
+
 							</ul>
 						</div>
 
@@ -182,10 +150,39 @@
 			</div>
 		</div>
 	</body>
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/echarts.min.js"></script>
 	<script src="assets/js/index.js"></script>
 	<script src="assets/js/map/shandong.js"></script>
+	<script>
+		var area = document.getElementById('scrollBox');
+		var lHeight = 0;
+		var time = 10;
+		area.innerHTML += area.innerHTML;
+		area.scrollTop = 0;
+		var timer;
+
+		function scrollMove() {
+			area.scrollTop++;
+			timer = setInterval("scrollUp()", time);
+		}
+
+		function scrollUp() {
+			if (area.scrollTop % lHeight == 0) { //滚动一行后，延时2秒
+				clearInterval(timer);
+				setTimeout("scrollMove()");
+			} else {
+				area.scrollTop++;
+				if (area.scrollTop >= area.scrollHeight / 2) { //判断滚动高度,当滚动高度大于area本身的高度时，使其回到原点重新滚动
+					area.scrollTop = 0;
+				}
+			}
+
+		}
+
+		setTimeout("scrollMove()"); //延迟2秒后执行scrollMove
+	</script>
 	<script>
 		var t = null;
 		t = setTimeout(time, 1000);
@@ -202,32 +199,6 @@
 			document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s + "秒";
 			t = setTimeout(time, 1000);
 		}
-
-	var area =document.getElementById('scrollBox');
-	var lHeight =0;
-	var time = 10;
-	area.innerHTML+=area.innerHTML;
-	area.scrollTop = 0;
-	var timer;
-	function scrollMove(){
-	area.scrollTop++;
-	timer = setInterval("scrollUp()",time);
-	}
-	
-	function scrollUp(){
-	if(area.scrollTop % lHeight==0){//滚动一行后，延时2秒
-	clearInterval(timer);
-	setTimeout("scrollMove()");
-	}else{
-	area.scrollTop++;
-	if(area.scrollTop>=area.scrollHeight/2){    //判断滚动高度,当滚动高度大于area本身的高度时，使其回到原点重新滚动
-	area.scrollTop = 0;
-	}
-	}
-
-	}
-	
-	setTimeout("scrollMove()");//延迟2秒后执行scrollMove
-	
 	</script>
+
 </html>
