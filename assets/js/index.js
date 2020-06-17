@@ -6,15 +6,37 @@ $(function() {
 
 function fun1() {
 	$.ajax({
-		url: "https://www.biaoruan.wang/wts/bigScreen/dataStatistic",
+		url: "https://www.biaoruan.wang/wts/bigScreen/orderDataStatistic",
 		success: function(res) {
 			console.log(res);
 			var data1 = res.data.orgOnlineNumTop5ProvinceBar; //第一组数据
 			var data2 = res.data.orgTodayUploadDataRankingBar; //第二组数据orgTodayUploadDataRankingBar 机构当日上传
 			var data3 = res.data.orgUploadTotalDataRankingBar; //orgUploadTotalDataRankingBar 这个是机构上传的总量
 			var data4 = res.data.uploadDataMonthLine;
-
-
+			var data5 = res.data.orgOnlineNumTop5ProvinceBar;
+			var data6 = res.data.platformOrderPriceBar;
+			var order = res.data.orderList;
+			console.log(order)
+			for (var i in order) {
+				console.log(order[i].paymentTime)
+				var str = "";
+				str += "<div class=''times'>" + order[i].paymentTime + "</div>"
+				str += "<div class='wrap' id='sh'>"
+				str += "<div class='left'><img src='assets/img/logo.png'></div>"
+				str += "<div class=''right'>"
+				str += "<span>" + order[i].patientName + "</span>"
+				str += "<span>" + order[i].paymentTime+"</span>"
+				str+="下单购买了<span>"+ order[i].examSuiteName+"</span>套餐"
+				str += "</div>"
+				str += "</div>"
+			}
+            $(".move").html(str)
+			$("#orgNumber").html(res.data.orgNumber);
+			$("#reristernum").html(res.data.userRegisterNumber);
+			$("#reportQueryNumber").html(res.data.orderNum7);
+			$("#reportQueryTotalNumber").html(res.data.orderTotalPrice);
+			$(".todayOrderNum").html(res.data.todayOrderNum);
+			$(".todayOrderPrice").html(res.data.todayOrderPrice)
 			/* 飞鸟尽*/
 			var graduateyear = echarts.init(document.getElementById('graduateyear'));
 			option = {
@@ -93,7 +115,7 @@ function fun1() {
 				xAxis: [{
 					type: 'category',
 					boundaryGap: false,
-					data: ['2022年', '2023年', '2024年', '2025年', '2026年', '2027年', '2028年'],
+					data: data4.category,
 					splitLine: {
 						show: true,
 						lineStyle: {
@@ -124,7 +146,7 @@ function fun1() {
 					},
 				}],
 				series: [{
-					data: [820, 932, 901, 934, 1290, 1330, 1320],
+					data: data4.value,
 					type: 'line',
 					smooth: true,
 					name: '数量',
@@ -179,7 +201,7 @@ function fun1() {
 							value: 234,
 							name: '医院xxx'
 						}
-					
+
 					],
 					itemStyle: {
 						emphasis: {
@@ -219,7 +241,7 @@ function fun1() {
 				},
 				xAxis: {
 					type: 'category',
-					data: ['云南', '海南', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+					data: data5.category,
 					axisLabel: {
 						textStyle: {
 							color: "#fff"
@@ -251,7 +273,7 @@ function fun1() {
 					containLabel: true
 				},
 				series: [{
-					data: [120, 200, 150, 80, 70, 110, 130],
+					data: data5.value,
 					type: 'bar',
 					name: '数量',
 					barWidth: 10,
@@ -283,7 +305,7 @@ function fun1() {
 					left: '5%',
 					right: '5%',
 					bottom: '0%',
-					top:"17%",
+					top: "17%",
 					containLabel: true
 				},
 				xAxis: [{
@@ -363,7 +385,7 @@ function fun1() {
 					top: '18%',
 					right: '5%',
 					left: '5%',
-					bottom:'5%',
+					bottom: '5%',
 					containLabel: true
 				},
 				xAxis: [{
@@ -450,7 +472,7 @@ function fun1() {
 
 				},
 				legend: {
-					data: ['实时订单总金额', '发起结算总金额', '结算金额'],
+					data: data6.legend,
 					right: "0%",
 					textStyle: {
 						color: '#fff'
@@ -465,7 +487,7 @@ function fun1() {
 				},
 				xAxis: [{
 					type: 'category',
-					data: ['一月', '2月', '三月', ],
+					data: data6.category,
 					splitLine: {
 						show: false,
 						lineStyle: {
@@ -483,7 +505,6 @@ function fun1() {
 							color: '#519cff'
 						},
 						rotate: '30'
-
 					}
 				}],
 				yAxis: [{
@@ -492,7 +513,7 @@ function fun1() {
 					nameTextStyle: {
 						color: '#fff'
 					},
-					
+
 					splitLine: {
 						show: true,
 						lineStyle: {
@@ -519,9 +540,9 @@ function fun1() {
 				}, ],
 				color: "yellow",
 				series: [{
-						name: '实时订单总金额',
+						name: data6.series[0].name,
 						type: 'bar',
-						data: [21, 14, 17],
+						data: data6.series[0].data,
 						itemStyle: {
 							normal: {
 								color: '#76da91'
@@ -534,9 +555,9 @@ function fun1() {
 						}
 					},
 					{
-						name: '发起结算总金额',
+						name: data6.series[1].name,
 						type: 'bar',
-						data: [12, 14, 17],
+						data: data6.series[1].data,
 						itemStyle: {
 							normal: {
 								color: '#f8cb7f'
@@ -549,9 +570,9 @@ function fun1() {
 						}
 					},
 					{
-						name: '结算金额',
+						name: data6.series[2].name,
 						type: 'bar',
-						data: [12, 14, 147],
+						data: data6.series[2].data,
 						itemStyle: {
 							normal: {
 								color: '#f89588'
